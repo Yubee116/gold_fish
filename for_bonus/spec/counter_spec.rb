@@ -59,20 +59,34 @@ describe Counter do
     end
   end
 
-  context 'given infinite variable' do
-    context 'given positive infinity' do
+  context 'given positve infinity' do
+    context 'and first method is called' do
       it 'returns positive infinity' do
         expect(Counter.counter(Float::INFINITY)[0].call).to eq(Float::INFINITY)
       end
     end
 
-    context 'given negative infinity' do
-      it 'returns negative' do
-        expect(Counter.counter(-Float::INFINITY)[0].call).to eq(-Float::INFINITY)
+    context 'and second method is called' do
+      it 'returns positive infinity' do
+        expect(Counter.counter(Float::INFINITY)[1].call).to eq(Float::INFINITY)
       end
     end
   end
 
+  context 'given negative infinity' do
+    context 'and first method is called' do
+      it 'returns negative infinity' do
+        expect(Counter.counter(-Float::INFINITY)[0].call).to eq(-Float::INFINITY)
+      end
+    end
+
+    context 'and second method is called' do
+      it 'returns negative infinity' do
+        expect(Counter.counter(-Float::INFINITY)[1].call).to eq(-Float::INFINITY)
+      end
+    end
+  end
+  
   context 'called three times with different positive initial values: 5, 10 and 15' do
     context 'and the first method is called' do
       it 'returns 5, 10, 15 (the independent counter inital values)' do
