@@ -17,7 +17,7 @@ describe counter do
     end
   end
 
-  context 'given initial value: 7' do
+  context 'given positive initial value: 7' do
     context 'and the first method is called' do
       it 'returns 7 (inital value)' do
         expect(counter(7)[0].call).to eq(7)
@@ -97,7 +97,7 @@ describe counter do
     end
 
     context 'and the second method is called' do
-      it 'returns 6 and 11 (the different counter initial values plus one)' do
+      it 'returns 6, 11 and 16 (the different counter initial values plus one)' do
         expect(counter(5)[1].call).to eq(6)
         expect(counter(10)[1].call).to eq(11)
         expect(counter(15)[1].call).to eq(16)
