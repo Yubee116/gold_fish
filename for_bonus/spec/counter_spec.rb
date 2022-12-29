@@ -6,7 +6,7 @@ describe counter do
   context 'given no initial value' do
     context 'and the first method is called' do
       it 'returns 0' do
-        expect((counter())[0].call).to eq(0)
+        expect(counter()[0].call).to eq(0)
       end
     end
 
