@@ -44,7 +44,7 @@ describe counter do
       end
     end
   end
-  
+
   context 'given non-number' do
     context 'given a string' do
       it 'returns nil' do
@@ -86,7 +86,7 @@ describe counter do
       end
     end
   end
-  
+
   context 'called three times with different positive initial values: 5, 10 and 15' do
     context 'and the first method is called' do
       it 'returns 5, 10, 15 (the independent counter inital values)' do
@@ -119,6 +119,44 @@ describe counter do
         expect(counter(-5)[1].call).to eq(-4)
         expect(counter(-10)[1].call).to eq(-9)
         expect(counter(-15)[1].call).to eq(-14)
+      end
+    end
+  end
+
+  context 'given more than one argument' do
+    context '3 args in the order: a number(0), a boolean (true) and a string(\'crabs\')' do
+      context 'and no method is called' do
+        it 'does not return nil' do
+          expect(counter(0, true, 'crabs')).not_to be_nil
+        end
+      end
+
+      context 'and the first method is called' do
+        it 'returns 0' do
+          expect(counter(0, true, 'crabs')[0].call).to eq(0)
+        end
+      end
+
+      context 'and the second method is called' do
+        it 'returns 1' do
+          expect(counter(0, true, 'crabs')[1].call).to eq(1)
+        end
+      end
+    end
+
+    context '3 args in the order: a string(\'crabs\'), a number(0) and a boolean (true)' do
+      context 'and no method is called' do
+        it 'returns nil' do
+          expect(counter('crabs', 0, true)).to be_nil
+        end
+      end
+    end
+
+    context '3 args in the order: a boolean(true), a string(\'crabs\'), and a number(0)' do
+      context 'and no method is called' do
+        it 'returns nil' do
+          expect(counter(true, 'crabs', 0)).to be_nil
+        end
       end
     end
   end
